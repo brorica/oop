@@ -4,9 +4,14 @@ import java.util.regex.Pattern;
 
 public class Validator {
 
+    private static final String EMAIL_REGEX = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
+
+    private static final Pattern EMAIL_PATTERN = Pattern.compile(EMAIL_REGEX);
+
     public static String EMAIL_VALIDATE(String email) {
-        String EMAIL_REGEX = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}$";
-        Pattern EMAIL_PATTERN = Pattern.compile(EMAIL_REGEX);
+        if (email == null || email.isBlank()) {
+            throw new RuntimeException("email 값은 필수입니다.");
+        }
         if (EMAIL_PATTERN.matcher(email).matches()) {
             return email;
         }
