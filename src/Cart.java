@@ -62,7 +62,7 @@ public class Cart {
         cartItemMap.clear();
     }
 
-    public int totalCost() {
+    public int getTotalCost() {
         long sum = 0;
         for (CartItem cartItem : cartItemMap.values()) {
             sum += cartItem.getTotalPrice();
