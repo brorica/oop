@@ -1,3 +1,5 @@
+import static validator.Validator.CHECK_NOT_MINUS;
+
 public class CartItem {
     private Product product;
 
@@ -20,10 +22,12 @@ public class CartItem {
         this.quantity += quantity;
     }
 
-    public void removeQuantity(int quantity) {
+    public void decreaseQuantity(int quantity) {
+        CHECK_NOT_MINUS(quantity);
         if (this.quantity < quantity) {
             throw new IllegalArgumentException("현재 수량보다 더 감소할 수 없습니다.");
         }
+        this.quantity -= quantity;
     }
 
     public int totalCost() {

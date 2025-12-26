@@ -1,5 +1,7 @@
 import exception.InsufficientStockException;
 
+import static validator.Validator.CHECK_NOT_MINUS;
+
 public class Product {
 
     private final String id;
@@ -15,9 +17,7 @@ public class Product {
     }
 
     public int validatePrice(int price) {
-        if (price < 0) {
-            throw new IllegalArgumentException("가격은 0 이상이어야 합니다.");
-        }
+        CHECK_NOT_MINUS(price, "가격은 0 이상이어야 합니다.");
         return price;
     }
 
@@ -29,9 +29,7 @@ public class Product {
     }
 
     public int validateStock(int stock) {
-        if (stock < 0) {
-            throw new IllegalArgumentException("재고는 0 이상이어야 합니다.");
-        }
+        CHECK_NOT_MINUS(price, "재고는 0 이상이어야 합니다.");
         return stock;
     }
 
@@ -40,9 +38,7 @@ public class Product {
      * @param count 감소할 개수
      */
     public void decreaseStock(int count) {
-        if (count < 0) {
-            throw new IllegalArgumentException("count 값은 음수가 될 수 없습니다. count = " + count);
-        }
+        CHECK_NOT_MINUS(count);
         if (stock < count) {
             throw new InsufficientStockException("재고 부족: 현재 = " + stock + " 요청 = " + count);
         }
@@ -62,9 +58,7 @@ public class Product {
     }
 
     public void setStock(int count) {
-        if (count < 0) {
-            throw new IllegalArgumentException("재고는 0 이상이어야 합니다.");
-        }
+        CHECK_NOT_MINUS(count, "재고는 0 이상이어야 합니다.");
         this.stock = count;
     }
 
