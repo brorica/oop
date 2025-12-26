@@ -40,7 +40,7 @@ public class CartItem {
         return this.quantity;
     }
 
-    public int totalCost() {
+    public int getTotalPrice() {
         long sum = (long) quantity * this.product.getPrice();
         if (sum > Integer.MAX_VALUE) {
             throw new RuntimeException("금액 초과 = " + sum + "원");

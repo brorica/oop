@@ -1,9 +1,5 @@
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
-import java.util.Set;
-
-import static validator.Validator.CHECK_NOT_MINUS;
 
 public class Cart {
 
@@ -56,7 +52,7 @@ public class Cart {
         }
 
         // 재고가 0이면 CartItem 없앰
-        if (cartItem.decreaseQuantity(count) == 0) {
+        if (cartItem.decreaseQuantity(count) <= 0) {
             cartItemMap.remove(product);
         }
     }
@@ -69,7 +65,7 @@ public class Cart {
     public int totalCost() {
         long sum = 0;
         for (CartItem cartItem : cartItemMap.values()) {
-            sum += cartItem.totalCost();
+            sum += cartItem.getTotalPrice();
         }
         if (sum > Integer.MAX_VALUE) {
             throw new RuntimeException("금액 초과 = " + sum + "원");
