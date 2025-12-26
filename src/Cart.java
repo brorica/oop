@@ -1,34 +1,74 @@
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
+
+import static validator.Validator.CHECK_NOT_MINUS;
 
 public class Cart {
 
     private Customer customer;
 
-    private Set<CartItem> cartItemSet;
+    private Map<Product, CartItem> cartItemMap;
 
+    /**
+     * cartItem 추가
+     * @param product Cart에 담길 Product
+     */
     public void addCartItem(Product product) {
-        if (cartItemSet.contains(product)) {
+        if (cartItemMap.containsKey(product)) {
             throw new RuntimeException("이미 존재하는 Product 입니다.");
         }
         CartItem cartItem = new CartItem(product);
-        cartItemSet.add(cartItem);
+        cartItemMap.put(product, cartItem);
     }
 
+    /**
+     * cartItem 제거
+     */
     public void removeCartItem(Product product) {
-        if (cartItemSet.contains(product)) {
+        CartItem cartItem = cartItemMap.get(product);
+        if (cartItem == null) {
             throw new RuntimeException("해당 Product는 Cart에 없습니다.");
         }
-        cartItemSet.remove(product);
+        cartItemMap.remove(product);
     }
 
+    /**
+     * 수량 더하기
+     */
+    public void addItemQuantity(Product product, int count) {
+        CartItem cartItem = cartItemMap.get(product);
+        if (cartItem == null) {
+            throw new RuntimeException("해당 Product는 Cart에 없습니다.");
+        }
+        cartItem.addQuantity(count);
+    }
+
+    /**
+     * CartItem 수량 감소
+     * 감소한 수량이 0이면 Cart에서 해당 CartItem 제거
+     */
+    public void decreaseItemQuantity(Product product, int count) {
+        CartItem cartItem = cartItemMap.get(product);
+        if (cartItem == null) {
+            throw new RuntimeException("해당 Product는 Cart에 없습니다.");
+        }
+
+        // 재고가 0이면 CartItem 없앰
+        if (cartItem.decreaseQuantity(count) == 0) {
+            cartItemMap.remove(product);
+        }
+    }
+
+
     public void clearAll() {
-        cartItemSet.clear();
+        cartItemMap.clear();
     }
 
     public int totalCost() {
         long sum = 0;
-        for (CartItem cartItem : cartItemSet) {
+        for (CartItem cartItem : cartItemMap.values()) {
             sum += cartItem.totalCost();
         }
         if (sum > Integer.MAX_VALUE) {
@@ -39,6 +79,6 @@ public class Cart {
 
     public Cart(Customer customer) {
         this.customer = customer;
-        this.cartItemSet = new HashSet<>(16);
+        this.cartItemMap = new HashMap<>(16);
     }
 }

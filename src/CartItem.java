@@ -14,20 +14,30 @@ public class CartItem {
         this.quantity = quantity;
     }
 
+    /**
+     * 개수 더하기
+     * @param quantity
+     */
     public void addQuantity(int quantity) {
+        CHECK_NOT_MINUS(quantity);
         long sum = (long)this.quantity + quantity;
         if (sum > Integer.MAX_VALUE) {
             throw new IllegalArgumentException("수량 허용 범위 초과: 현재 = " + this.quantity + "요청 = " + quantity);
         }
+
         this.quantity += quantity;
     }
 
-    public void decreaseQuantity(int quantity) {
+    /**
+     * 개수 감소
+     */
+    public int decreaseQuantity(int quantity) {
         CHECK_NOT_MINUS(quantity);
         if (this.quantity < quantity) {
             throw new IllegalArgumentException("현재 수량보다 더 감소할 수 없습니다.");
         }
         this.quantity -= quantity;
+        return this.quantity;
     }
 
     public int totalCost() {
@@ -35,6 +45,7 @@ public class CartItem {
         if (sum > Integer.MAX_VALUE) {
             throw new RuntimeException("금액 초과 = " + sum + "원");
         }
+
         return (int)sum;
     }
 
@@ -49,5 +60,13 @@ public class CartItem {
             " " + this.product.getStock() + "개" +
             " " + this.quantity + "만큼 차감"
         );
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public int getQuantity() {
+        return quantity;
     }
 }
