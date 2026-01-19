@@ -18,13 +18,14 @@ public class Validator {
         throw new RuntimeException("올바른 이메일 형식이 아닙니다. email = " + email);
     }
 
-    public static void CHECK_NOT_MINUS(int notMinus) {
-        CHECK_NOT_MINUS(notMinus, "음수가 될 수 없습니다.");
+    public static int CHECK_NOT_MINUS(int notMinus) {
+        return CHECK_NOT_MINUS(notMinus, "음수가 될 수 없습니다.");
     }
 
-    public static void CHECK_NOT_MINUS(int notMinus, String message) {
+    public static int CHECK_NOT_MINUS(int notMinus, String message) {
         if (notMinus < 0) {
             throw new IllegalArgumentException(message);
         }
+        return notMinus;
     }
 }
