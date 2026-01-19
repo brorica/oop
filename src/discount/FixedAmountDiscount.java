@@ -13,6 +13,6 @@ public class FixedAmountDiscount implements DisCountable {
     @Override
     public int discount(int itemPrice) {
         int result = itemPrice - discountPrice;
-        return CHECK_NOT_MINUS(result);
+        return Math.max(result, 0);
     }
 }

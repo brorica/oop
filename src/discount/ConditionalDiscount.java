@@ -17,6 +17,6 @@ public class ConditionalDiscount implements DisCountable {
         if (itemPrice < minimumPrice) {
             throw new IllegalArgumentException("할인 조건을 만족하지 못합니다. 최소 금액: " + minimumPrice);
         }
-        return CHECK_NOT_MINUS(itemPrice - discountPrice);
+        return Math.max(itemPrice - discountPrice, 0);
     }
 }
