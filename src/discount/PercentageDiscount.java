@@ -2,7 +2,7 @@ package discount;
 
 import static validator.Validator.CHECK_NOT_MINUS;
 
-public class PercentageDiscount {
+public class PercentageDiscount implements DisCountable {
 
     int disCountPercent;
 
@@ -15,6 +15,7 @@ public class PercentageDiscount {
     }
 
     // 소숫점은 버린다.
+    @Override
     public int discount(int itemPrice) {
         return itemPrice * disCountPercent / 100;
     }
