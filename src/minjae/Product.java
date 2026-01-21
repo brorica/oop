@@ -1,6 +1,8 @@
-import exception.InsufficientStockException;
+package minjae;
 
-import static validator.Validator.CHECK_NOT_MINUS;
+import minjae.exception.InsufficientStockException;
+
+import static minjae.validator.Validator.CHECK_NOT_MINUS;
 
 public class Product {
 

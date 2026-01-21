@@ -1,4 +1,6 @@
-import static validator.Validator.CHECK_NOT_MINUS;
+package minjae;
+
+import static minjae.validator.Validator.CHECK_NOT_MINUS;
 
 public class CartItem {
     private Product product;

@@ -1,4 +1,4 @@
-package enums;
+package minjae.enums;
 
 public enum CustomerGrade {
     BRONZE("Bronze"),

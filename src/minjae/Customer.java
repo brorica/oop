@@ -1,6 +1,8 @@
-import enums.CustomerGrade;
+package minjae;
 
-import static validator.Validator.EMAIL_VALIDATE;
+import minjae.enums.CustomerGrade;
+
+import static minjae.validator.Validator.EMAIL_VALIDATE;
 
 public class Customer {
 

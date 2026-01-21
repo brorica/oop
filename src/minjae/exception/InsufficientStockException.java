@@ -1,4 +1,4 @@
-package exception;
+package minjae.exception;
 
 public class InsufficientStockException extends RuntimeException {
 

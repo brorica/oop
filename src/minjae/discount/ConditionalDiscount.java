@@ -1,6 +1,6 @@
-package discount;
+package minjae.discount;
 
-import static validator.Validator.CHECK_NOT_MINUS;
+import static minjae.validator.Validator.CHECK_NOT_MINUS;
 
 public class ConditionalDiscount implements DisCountable {
 

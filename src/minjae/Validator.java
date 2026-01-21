@@ -1,4 +1,4 @@
-package validator;
+package minjae.validator;
 
 import java.util.regex.Pattern;
 
