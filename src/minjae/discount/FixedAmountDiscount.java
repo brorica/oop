@@ -2,7 +2,7 @@ package minjae.discount;
 
 import static minjae.validator.Validator.CHECK_NOT_MINUS;
 
-public class FixedAmountDiscount implements DisCountable {
+public class FixedAmountDiscount implements DisCountPolicy {
 
     int discountPrice;
 

@@ -1,4 +1,6 @@
-package minjae;
+package minjae.cart;
+
+import minjae.product.Product;
 
 import static minjae.validator.Validator.CHECK_NOT_MINUS;
 
@@ -70,5 +72,9 @@ public class CartItem {
 
     public int getQuantity() {
         return quantity;
+    }
+
+    public int getPrice() {
+        return product.getPrice();
     }
 }

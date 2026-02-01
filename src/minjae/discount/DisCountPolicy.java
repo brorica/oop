@@ -1,6 +1,6 @@
 package minjae.discount;
 
-public interface DisCountable {
+public interface DisCountPolicy {
 
     public int discount(int itemPrice);
 }

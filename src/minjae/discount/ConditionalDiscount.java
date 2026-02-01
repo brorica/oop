@@ -2,7 +2,7 @@ package minjae.discount;
 
 import static minjae.validator.Validator.CHECK_NOT_MINUS;
 
-public class ConditionalDiscount implements DisCountable {
+public class ConditionalDiscount implements DisCountPolicy {
 
     int discountPrice;
     int minimumPrice;

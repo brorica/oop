@@ -1,4 +1,4 @@
-package minjae;
+package minjae.product;
 
 import minjae.exception.InsufficientStockException;
 
@@ -37,6 +37,7 @@ public class Product {
 
     /**
      * 재고 감소
+     * 재고가 없으면 예외로 판정해 구매를 진행하지 않는다.
      * @param count 감소할 개수
      */
     public void decreaseStock(int count) {
